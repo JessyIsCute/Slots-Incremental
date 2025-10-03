@@ -1,0 +1,38 @@
+/* Basic layout */
+body {
+  display: flex;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* Sidebar with tab buttons */
+#sidebar {
+  width: 150px;
+  background: #eee;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Buttons */
+.tab-btn {
+  padding: 8px;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tab-btn:hover {
+  background: #ccc;
+}
+
+/* Content area */
+.tab-content {
+  display: none; /* hidden by default */
+  padding: 20px;
+  flex: 1;
+  background: #f9f9f9;
+  border-left: 1px solid #ccc;
+}
