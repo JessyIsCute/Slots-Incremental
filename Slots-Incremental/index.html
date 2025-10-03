@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Incremental Game</title>
-    <link rel="stylesheet" href="CCS/stylesheet.css">
+    <title>Slots Incremental</title>
+    <link rel="stylesheet" href="CSS/stylesheet.css">
 </head>
 
 <body>
-    <h1>Welcome to My Incremental Game</h1>
-
+    <!-- Currencies (top-right) -->
     <div id="currencies">
-        <h2>Resources</h2>
         <div id="currency-money">
             <p>Money: </p>
             <p class="Display" id="money">0</p>
@@ -25,21 +23,32 @@
 
     <!-- Sidebar -->
     <div id="sidebar">
+        <button class="tab-btn" data-tab="slot-machine">Slot Machine</button>
         <button class="tab-btn" data-tab="upgrades">Upgrades</button>
         <button class="tab-btn" data-tab="achievements">Achievements</button>
         <button class="tab-btn" data-tab="settings">Settings</button>
     </div>
 
 
+    <!-- Main Content -->
+    <div id="main">
+        <div class="tab-content" id="slot-machine">
+            Slot stuff goes here
 
-    <div id="content">
-        <div class="tab-content" id="SlotMachine">Slot stuff goes here
+            <table id="slot-reels-table">
+                <tr>
+                    <td class="reel"><img src="images/X.png" alt="reel"></td>
+                    <td class="reel"><img src="images/X.png" alt="reel"></td>
+                    <td class="reel"><img src="images/X.png" alt="reel"></td>
+                </tr>
+            </table>
+            <button id="spin-btn">Spin</button>
+            <p id="slot-result"></p>
 
         </div>
-        <div id="SlotMachine">
-        </div>
-        <div class="tab-content" id="upgrades">Upgrade stuff goes here
 
+        <div class="tab-content" id="upgrades">
+            
         </div>
         <div class="tab-content" id="achievements">Achievement stuff goes here
 
@@ -50,9 +59,10 @@
     </div>
 
 
-    </div>
+    <script src="JS/tabs.js"></script>
     <script src="JS/main.js"></script>
     <script src="JS/tabs.js"></script>
+    <script src="JS/slotmachine.js"></script>
 </body>
 
 </html>

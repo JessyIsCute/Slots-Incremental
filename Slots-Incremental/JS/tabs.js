@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".tab-btn");
   const contents = document.querySelectorAll(".tab-content");
 
+  // show default tab first
+    document.getElementById("slot-machine").style.display = "block";
+
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
       const tab = btn.dataset.tab;
@@ -14,5 +17,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Show default tab
-  document.getElementById("upgrades").style.display = "block";});
+});

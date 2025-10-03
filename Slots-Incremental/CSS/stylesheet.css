@@ -1,38 +1,72 @@
-/* Basic layout */
+/* Reset defaults */
 body {
-  display: flex;
-  margin: 0;
-  font-family: sans-serif;
+    margin: 0;
+    font-family: sans-serif;
 }
 
-/* Sidebar with tab buttons */
+#currencies {
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    display: flex;
+    gap: 20px;       /* space between currency boxes */
+    background: rgb(255, 255, 255);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    z-index: 100;
+}
+
+/* Each currency box displays label and value in one line */
+#currencies > div {
+    display: flex;
+    align-items: center;   /* vertically center text */
+    gap: 5px;              /* space between label and value */
+}
+
+/* Optional: make value bold */
+#currencies .Display {
+    font-weight: bold;
+}
+
+/* Sidebar left */
 #sidebar {
-  width: 150px;
-  background: #eee;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 100%;
+    background: #eee;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
-/* Buttons */
+/* Buttons in sidebar */
 .tab-btn {
-  padding: 8px;
-  border: none;
-  background: #ddd;
-  cursor: pointer;
-  text-align: left;
+    padding: 8px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    text-align: left;
 }
 
 .tab-btn:hover {
-  background: #ccc;
+    background: #ccc;
 }
 
-/* Content area */
+/* Main content area (next to sidebar) */
+#main {
+    margin-left: 180px;  /* space for sidebar */
+    margin-right: 170px; /* space for sidebar */
+    margin-top: 50px;    /* space for currencies */
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+}
+
+/* Hide all tab contents by default */
 .tab-content {
-  display: none; /* hidden by default */
-  padding: 20px;
-  flex: 1;
-  background: #f9f9f9;
-  border-left: 1px solid #ccc;
+    display: none;
 }

@@ -1,7 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-    
-
-    
+      runGameLoop();
 });
 
 
@@ -10,7 +8,7 @@ const runGameLoop = () => {
 }
 
 const updateGame = (elapsedTime) => {
-     
+
 }
     
 
