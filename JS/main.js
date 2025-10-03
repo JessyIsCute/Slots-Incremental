@@ -1,17 +1,17 @@
-window.addEventListener("DOMContentLoaded", () => {
-      runGameLoop();
-});
+
+
+
 
 
 const runGameLoop = () => {
-    setInterval(() => updateGame(1/30), 1000/30); // 1/30 seconds per frame
+    setInterval(() => updateGame(1 / 30), 1000 / 30); // 1/30 seconds per frame
 }
 
 const updateGame = (elapsedTime) => {
 
 }
-    
 
-     
+
+
 
 

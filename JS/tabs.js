@@ -1,20 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".tab-btn");
-  const contents = document.querySelectorAll(".tab-content");
 
-  // show default tab first
-    document.getElementById("slot-machine").style.display = "block";
+const buttons = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const tab = btn.dataset.tab;
+// show default tab first
+document.getElementById("slot-machine").style.display = "flex";
 
-      // Hide all content
-      contents.forEach(c => c.style.display = "none");
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tab = btn.dataset.tab;
 
-      // Show the clicked one
-      document.getElementById(tab).style.display = "block";
-    });
+    // Hide all content
+    contents.forEach(c => c.style.display = "none");
+
+    // Show the clicked one
+    document.getElementById(tab).style.display = "flex";
   });
-
 });

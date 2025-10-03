@@ -1,0 +1,35 @@
+/* Sidebar left */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 100%;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Buttons in sidebar */
+.tab-btn {
+    padding: 8px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    text-align: left;
+}
+
+.tab-btn:hover {
+    background: #ccc;
+}
+
+/* Hide all tab contents by default */
+.tab-content {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+

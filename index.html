@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slots Incremental</title>
+    <link rel="stylesheet" href="CSS/slotMachine.css">
     <link rel="stylesheet" href="CSS/stylesheet.css">
+    <link rel="stylesheet" href="CSS/currencies.css">
+    <link rel="stylesheet" href="CSS/sidebar.css">
 </head>
 
 <body>
@@ -33,22 +36,28 @@
     <!-- Main Content -->
     <div id="main">
         <div class="tab-content" id="slot-machine">
-            Slot stuff goes here
+            <h1>Slot Machine</h1>
+            <div id="slot-machine-grid">
+                <div class="reel" data-x="0" data-y="0"><img src="images/X.png"></div>
+                <div class="reel" data-x="1" data-y="0"><img src="images/X.png"></div>
+                <div class="reel" data-x="2" data-y="0"><img src="images/X.png"></div>
 
-            <table id="slot-reels-table">
-                <tr>
-                    <td class="reel"><img src="images/X.png" alt="reel"></td>
-                    <td class="reel"><img src="images/X.png" alt="reel"></td>
-                    <td class="reel"><img src="images/X.png" alt="reel"></td>
-                </tr>
-            </table>
+                <div class="reel" data-x="0" data-y="1"><img src="images/X.png"></div>
+                <div class="reel" data-x="1" data-y="1"><img src="images/X.png"></div>
+                <div class="reel" data-x="2" data-y="1"><img src="images/X.png"></div>
+
+                <div class="reel" data-x="0" data-y="2"><img src="images/X.png"></div>
+                <div class="reel" data-x="1" data-y="2"><img src="images/X.png"></div>
+                <div class="reel" data-x="2" data-y="2"><img src="images/X.png"></div>
+            </div>
+
             <button id="spin-btn">Spin</button>
             <p id="slot-result"></p>
 
         </div>
 
         <div class="tab-content" id="upgrades">
-            
+
         </div>
         <div class="tab-content" id="achievements">Achievement stuff goes here
 
@@ -62,6 +71,7 @@
     <script src="JS/tabs.js"></script>
     <script src="JS/main.js"></script>
     <script src="JS/symbols.js"></script>
+    <script src="JS/lines.js"></script>
     <script src="JS/slotmachine.js"></script>
 </body>
 
