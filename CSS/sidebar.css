@@ -41,7 +41,3 @@
 #sidebar .tab-btn[data-tab="achievements"] {
     display: none;
 }
-
-#sidebar .tab-btn[data-tab="settings"] {
-    display: none;
-}
