@@ -1,8 +1,8 @@
 
 
 const slotConfig = {
-    height: 3,    // number of rows
-    width: 3,       // number of reels
+    height: 4,    // number of rows
+    width: 4,       // number of reels
     reelSpinDuration: 1000, // duration of reel spin in milliseconds
     highlightTime: 1500, // cooldown time between spins in milliseconds
     buttonDisableTime: 1000 // cooldown time between spins in milliseconds
@@ -87,8 +87,8 @@ function checkLine(line) {
         let winAmount = firstSymbol.winValue
 
          * line.winMutliplier
-         if (count >= 3) {
-            winAmount *= Math.pow(firstSymbol.multiplierPerSymbol, count - 2);
+         if (count >= 4) {
+            winAmount *= Math.pow(firstSymbol.multiplierPerSymbol, count - 3);
          }
         return {winAmount, line};
     }
@@ -135,9 +135,31 @@ function highlightLinesSequentially(winningLines) {
 
             i++; // move to next line
             highlightNext(); // recursive step
-        }, slotConfig.highlightTime/winningLines.length);
+        }, slotConfig.highlightTime/winningLines.length + 300);
     }
 
     highlightNext();
 }
 
+function renderSlotMachine() {
+    const grid = document.getElementById("slot-machine-grid");
+    grid.innerHTML = ""; // clear existing  content
+    for (let y = 0; y < slotConfig.height; y++) {
+        for (let x = 0; x < slotConfig.width; x++) {
+            const reel = document.createElement("div");
+            reel.className = "reel";
+            reel.dataset.x = x;
+            reel.dataset.y = y; 
+            const img = document.createElement("img");
+            img.src = "images/X.png"; // default image
+            reel.appendChild(img);
+            grid.appendChild(reel);
+            slotState.displayedSymbols[x][y] = slotSymbols.find(s => s.name === "X");
+        }
+    }   
+    grid.style.gridTemplateColumns = `repeat(${slotConfig.width}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${slotConfig.height}, 1fr)`;
+
+}
+
+renderSlotMachine();

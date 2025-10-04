@@ -7,13 +7,14 @@ body, html {
     font-family: sans-serif;
 }
 
-/* Main content area (next to sidebar) */
 #main {
-    margin-left: 160px;  /* space for sidebar */
-    margin-right: 160px; /* space for sidebar */
-    margin-top: 50px;    /* space for currencies */
+    margin-left: 160px;   /* makes room for sidebar */
+    padding: 20px;        /* inner spacing */
+    margin-right: 0;      /* don't push content in from right side */
+    margin-top: 50px;     /* keeps space for currencies */
     height: calc(100vh - 60px);
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
 /* Tabs */

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slots Incremental</title>
+    <link rel="stylesheet" href="CSS/lines.css">
+    <link rel="stylesheet" href="CSS/symbols.css">
     <link rel="stylesheet" href="CSS/upgrades.css">
     <link rel="stylesheet" href="CSS/achievements.css">
     <link rel="stylesheet" href="CSS/slotMachine.css">
@@ -30,6 +32,8 @@
     <div id="sidebar">
         <button class="tab-btn" data-tab="slot-machine">Slot Machine</button>
         <button class="tab-btn" data-tab="upgrades">Upgrades</button>
+        <button class="tab-btn" data-tab="lines">Lines</button>
+        <button class="tab-btn" data-tab="symbols">Symbols</button>
         <button class="tab-btn" data-tab="achievements">Achievements</button>
         <button class="tab-btn" data-tab="settings">Settings</button>
     </div>
@@ -39,6 +43,9 @@
     <div id="main">
         <div class="tab-content" id="slot-machine">
             <h1>Slot Machine</h1>
+
+
+
             <div id="slot-machine-grid">
                 <div class="reel" data-x="0" data-y="0"><img src="images/X.png"></div>
                 <div class="reel" data-x="1" data-y="0"><img src="images/X.png"></div>
@@ -55,16 +62,33 @@
 
             <button id="spin-btn">Spin</button>
             <p id="slot-result"></p>
+
+
         </div>
 
         <div class="tab-content" id="upgrades">
             <div id="map-container">
                 <div id="map">
-                    
+
                     <!-- more nodes -->
                 </div>
             </div>
+
         </div>
+
+        <div class="tab-content" id="lines">
+            <h1>Line Details</h1>
+            <p>Here you can find information about the different paylines and their multipliers.</p>
+            <div id="line-details"></div>
+        </div>
+
+        <div class="tab-content" id="symbols">
+            <h1>Symbol Details</h1>
+            <div id="symbol-details">
+                <!-- Symbols will be dynamically added here -->
+            </div>
+        </div>
+
 
         <div class="tab-content" id="achievements">
 

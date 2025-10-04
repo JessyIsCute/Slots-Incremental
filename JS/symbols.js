@@ -21,10 +21,39 @@ class SlotSymbol {
 }
 
 const slotSymbols = [
-    new SlotSymbol("X", "X.png", true, 50, 0, 0),
-    new SlotSymbol("Cherry", "Cherry.png", true, 500, 1, 2),
-    new SlotSymbol("Lemon", "Lemon.png", true, 100, 5 , 2),
-    new SlotSymbol("Wild", "Wild.png", true, 50, 10 , 1, true),
-    new SlotSymbol("Diamond", "Diamond.png", false),
+    new SlotSymbol("Wild", "Wild.png", true, 50, 1 , 1, true),
+    new SlotSymbol("X", "X.png", true, 25, 0, 0),
+    new SlotSymbol("Cherry", "Cherry.png", true, 100, 1, 2),
+    new SlotSymbol("Lemon", "Lemon.png", true, 75, 5 , 2),
+    new SlotSymbol("Diamond", "Diamond.png", true, 25, 10, 2),
 ];
 
+
+
+function showSymbolsDetails() {
+    const symbolDetails = document.getElementById("symbol-details");
+    symbolDetails.innerHTML = ""; // Clear previous details
+
+    for (const symbol of slotSymbols) {
+        const symbolDiv = document.createElement("div");
+        symbolDiv.className = "symbol-detail";
+        if (!symbol.isUnlocked) symbolDiv.classList.add("locked");
+
+
+        const img = document.createElement("img");
+        img.src = `images/${symbol.imgPath}`;
+        symbolDiv.appendChild(img);
+
+        symbolDiv.innerHTML += `
+            <strong>${symbol.name}</strong> - ${symbol.isUnlocked ? "Unlocked" : "Locked"}<br>
+            Weight: ${symbol.weight}<br>
+            Win Value: ${symbol.winValue}<br>
+            Multiplier per Symbol: x${symbol.multiplierPerSymbol}<br>
+            ${symbol.isWild ? "<em>Wild Symbol</em><br>" : ""}
+        `;
+
+        symbolDetails.appendChild(symbolDiv);
+    }
+}
+
+showSymbolsDetails();

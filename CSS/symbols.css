@@ -1,0 +1,67 @@
+/* Container holding all symbol details */
+#symbol-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+}
+
+/* Each symbol card */
+.symbol-detail {
+    background: linear-gradient(145deg, #222, #2d2d2d);
+    color: #eee;
+    width: 180px;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    text-align: center;
+    font-family: "Segoe UI", sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for interactivity */
+.symbol-detail:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* Symbol image styling */
+.symbol-detail img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+/* Name of the symbol */
+.symbol-detail strong {
+    display: block;
+    color: #ffd700;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+/* Wild symbols stand out */
+.symbol-detail em {
+    color: #00e676;
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* For locked vs unlocked states */
+.symbol-detail::after {
+    content: "";
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    margin-top: 8px;
+    background-color: rgba(255, 215, 0, 0.5);
+}
+
+.symbol-detail.locked {
+    opacity: 0.5;
+    filter: grayscale(70%);
+}
