@@ -21,10 +21,10 @@ class SlotSymbol {
 }
 
 const slotSymbols = [
-    new SlotSymbol("X", "X.png", true, 500, 0, 0),
+    new SlotSymbol("X", "X.png", true, 50, 0, 0),
     new SlotSymbol("Cherry", "Cherry.png", true, 500, 1, 2),
-    new SlotSymbol("Lemon", "Lemon.png", true, 1, 5 , 2),
-    new SlotSymbol("Wild", "Wild.png", false, 1, 10 , 1, true),
+    new SlotSymbol("Lemon", "Lemon.png", true, 100, 5 , 2),
+    new SlotSymbol("Wild", "Wild.png", true, 50, 10 , 1, true),
     new SlotSymbol("Diamond", "Diamond.png", false),
 ];
 
