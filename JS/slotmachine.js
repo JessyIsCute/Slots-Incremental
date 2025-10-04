@@ -3,7 +3,9 @@
 const slotConfig = {
     height: 3,    // number of rows
     width: 3,       // number of reels
-    reelSpinDuration: 1000 // duration of reel spin in milliseconds
+    reelSpinDuration: 1000, // duration of reel spin in milliseconds
+    highlightTime: 1500, // cooldown time between spins in milliseconds
+    buttonDisableTime: 1000 // cooldown time between spins in milliseconds
 };
 
 const slotState = {
@@ -15,8 +17,22 @@ const spinBtn = document.getElementById("spin-btn");
 const resultEl = document.getElementById("slot-result");
 
 spinBtn.addEventListener("click", () => {
+    if (spinBtn.disabled) return; // prevent multiple clicks during cooldown
+    spinBtn.disabled = true;
+
     spinSlot();
-    payOut(checkWin());
+    const { totalWin, winningLines } = checkWin()
+
+    if (winningLines.length > 0) {
+        highlightLinesSequentially(winningLines);
+        setTimeout(() => {
+        spinBtn.disabled = false;}, slotConfig.highlightTime);
+    }
+    else { 
+        setTimeout(() => {
+        spinBtn.disabled = false;}, slotConfig.buttonDisableTime);
+    }
+    payOut(totalWin, "money");
 });
 
 function spinSlot() {
@@ -52,43 +68,76 @@ function generateSymbol() {
 };
 function checkLine(line) {
     const positions = line.position;
-    const lineSymbols = [];
-    for (let i = 0; i < positions.length; i++) {
-        lineSymbols.push(slotState.displayedSymbols[positions[i][0]][positions[i][1]]);
-    }
-    const firstSymbol = lineSymbols[0];
+    let lineSymbols = positions.map(([x, y]) => slotState.displayedSymbols[x][y]);
 
-    if (lineSymbols.every(s => s.name === firstSymbol.name)) {
-        const winAmount = firstSymbol.winValue * line.winMutliplier * (1 + (lineSymbols.length - 1) * firstSymbol.multiplierPerSymbol);
-        return winAmount;
+    let firstSymbol = lineSymbols.find(s => !s.isWild);
+
+    if (!firstSymbol) {
+        const unlockedSymbols = slotSymbols.filter(s => s.isUnlocked && !s.isWild);
+        firstSymbol = unlockedSymbols.reduce((max, s) => (s.winValue > max.winValue ? s : max), unlockedSymbols[0]);
+    }
+
+
+    if (firstSymbol.name === "X") return null;
+
+    const allMatch = lineSymbols.every(s => s.isWild || s.name === firstSymbol.name);
+
+    if (allMatch) {
+        const count = lineSymbols.length;
+        let winAmount = firstSymbol.winValue
+
+         * line.winMutliplier
+         if (count >= 3) {
+            winAmount *= Math.pow(firstSymbol.multiplierPerSymbol, count - 2);
+         }
+        return {winAmount, line};
     }
 
 }
 
 function checkWin() {
     let totalWin = 0;
+    const winningLines = [];
 
     for (const line of slotLines.filter(l => l.isUnlocked)) {
         
-        const winamount = checkLine(line)
-        if (winamount) {
-            totalWin += winamount;
+        const result = checkLine(line)
+        if (result) {
+            totalWin += result.winAmount;
+            winningLines.push(result.line);
         }
-        
-        
     }
 
-    return totalWin;
+    return {totalWin, winningLines}; 
 }
 
-const moneyEl = document.getElementById("money");
 
-function payOut(amount) {
-    if (amount > 0) {
-        resultEl.textContent = `You win ${amount}!`;
-        moneyEl.textContent = parseInt(moneyEl.textContent) + amount;
+function highlightLinesSequentially(winningLines) {
+    let i = 0;
 
-    } else {
-        resultEl.textContent = "No win, try again!";
+    function highlightNext() {
+        if (i >= winningLines.length) return; // stop if no more lines
+
+        const line = winningLines[i];
+
+        // highlight this line
+        for (const [x, y] of line.position) {
+            const reelEl = document.querySelector(`#slot-machine-grid .reel[data-x='${x}'][data-y='${y}']`);
+            reelEl.classList.add("highlight");
+        }
+
+        // remove highlight after some time
+        setTimeout(() => {
+            for (const [x, y] of line.position) {
+                const reelEl = document.querySelector(`#slot-machine-grid .reel[data-x='${x}'][data-y='${y}']`);
+                reelEl.classList.remove("highlight");
+            }
+
+            i++; // move to next line
+            highlightNext(); // recursive step
+        }, slotConfig.highlightTime/winningLines.length);
     }
+
+    highlightNext();
 }
+

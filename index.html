@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slots Incremental</title>
+    <link rel="stylesheet" href="CSS/upgrades.css">
+    <link rel="stylesheet" href="CSS/achievements.css">
     <link rel="stylesheet" href="CSS/slotMachine.css">
     <link rel="stylesheet" href="CSS/stylesheet.css">
     <link rel="stylesheet" href="CSS/currencies.css">
@@ -16,11 +18,11 @@
     <div id="currencies">
         <div id="currency-money">
             <p>Money: </p>
-            <p class="Display" id="money">0</p>
+            <p class="display-money" id="money">0</p>
         </div>
         <div id="currency-gold">
             <p>Gold: </p>
-            <p class="Display" id="gold">0</p>
+            <p class="display-gold" id="gold">0</p>
         </div>
     </div>
 
@@ -53,13 +55,33 @@
 
             <button id="spin-btn">Spin</button>
             <p id="slot-result"></p>
-
         </div>
 
         <div class="tab-content" id="upgrades">
-
+            <div id="map-container">
+                <div id="map">
+                    <div class="upgrade-node" data-id="1" style="left: 50px; top: 50px;">Upgrade 1</div>
+                    <div class="upgrade-node" data-id="2" style="left: 200px; top: 100px;">Upgrade 2</div>
+                    <!-- more nodes -->
+                </div>
+            </div>
         </div>
-        <div class="tab-content" id="achievements">Achievement stuff goes here
+
+        <div class="tab-content" id="achievements">
+
+            <h1>Achievements</h1>
+            <div class="achievement" data-unlocked="false">
+                <img src="images/achievement1.png" alt="Achievement 1">
+                <p>Spin 10 times</p>
+            </div>
+            <div class="achievement" data-unlocked="false">
+                <img src="images/achievement2.png" alt="Achievement 2">
+                <p>Get 3 Cherries</p>
+            </div>
+            <div class="achievement" data-unlocked="false">
+                <img src="images/achievement3.png" alt="Achievement 3">
+                <p>Win 50 coins</p>
+            </div>
 
         </div>
         <div class="tab-content" id="settings">Settings stuff goes here
@@ -68,11 +90,14 @@
     </div>
 
 
-    <script src="JS/tabs.js"></script>
     <script src="JS/main.js"></script>
+    <script src="JS/tabs.js"></script>
+    <script src="JS/currencies.js"></script>
     <script src="JS/symbols.js"></script>
     <script src="JS/lines.js"></script>
     <script src="JS/slotmachine.js"></script>
+    <script src="JS/achievements.js"></script>
+    <script src="JS/upgrades.js"></script>
 </body>
 
 </html>

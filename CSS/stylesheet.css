@@ -1,6 +1,9 @@
-/* Reset defaults */
-body {
+
+/* Reset */
+body, html {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: sans-serif;
 }
 
@@ -11,4 +14,20 @@ body {
     margin-top: 50px;    /* space for currencies */
     height: calc(100vh - 60px);
     overflow-y: auto;
+}
+
+/* Tabs */
+.tab-content {
+    display: none;            /* hide by default */
+    flex-direction: column;   /* stack children vertically */
+    justify-content: center;  /* vertical centering */
+    align-items: center;      /* horizontal centering */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
 }

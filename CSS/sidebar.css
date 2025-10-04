@@ -11,6 +11,11 @@
     gap: 5px;
 }
 
+#sidebar {
+    position: fixed;
+    z-index: 10;
+}
+
 /* Buttons in sidebar */
 .tab-btn {
     padding: 8px;
@@ -30,6 +35,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
+#sidebar .tab-btn[data-tab="achievements"] {
+    display: none;
+}
+
+#sidebar .tab-btn[data-tab="settings"] {
+    display: none;
+}
